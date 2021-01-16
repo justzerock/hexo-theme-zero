@@ -1,2 +1,2 @@
-# hexo-theme-zero
+# hexo-theme-zexo
 hexo主题
