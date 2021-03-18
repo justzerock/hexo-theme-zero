@@ -1,4 +1,4 @@
-hexo.on('generateBefore', function () {
+/* hexo.on('generateBefore', function () {
   var rootConfig = hexo.config;
 
   if (hexo.locals.get) {
@@ -10,6 +10,9 @@ hexo.on('generateBefore', function () {
       hexo.theme.config = data.zexo;
     }
   }
+  var moment = require('moment');
+  require('moment/locale/zh-cn');
 
   hexo.theme.config.rootConfig = rootConfig;
-});
+
+}); */

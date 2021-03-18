@@ -1,10 +1,10 @@
 {% extends 'includes/layout.swig' %}
 
 {% block body %}
-  <div id="category">
-    <h1>{{ page.category }}</h1>
+  <div id="category" class="category">
+    <h1 class="category__title">{{ page.category }}</h1>
     {% for postItem in page.posts.toArray() %}
-      <div class="category-item">
+      <div class="category__item">
         <a href="{{ url_for(postItem.path) }}">
           {{ postItem.title }}
         </a>
@@ -15,7 +15,6 @@
     {% endfor %}
   </div>
 
-  <div id="paginator">
-    {{ paginator() }}
-  </div>
+  {% include 'includes/paginator.swig' %}
+
 {% endblock %}

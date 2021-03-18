@@ -1,0 +1,20 @@
+// 盒子阴影
+boxShadow(len, type)
+  $size-lt = len*-1 len*-1 len*2
+  $size-rb = len len len*3
+  $color-lt = #F3F7FB
+  $color-rb = #C1D7E8
+  if type == 'light-out'
+    $shadow = '%s %s, %s %s' % ($size-lt $color-lt $size-rb $color-rb)
+  else if type == 'light-inset'
+    $shadow = 'inset %s %s, inset %s %s' % ($size-lt $color-lt $size-rb $color-rb)
+  return $shadow
+
+// 文本阴影
+textShadow(type = 'light', size = 0.1vw, light = #F3F7FB, dark = $color-dark)
+  $baseLight = size size size*2 light
+  $baseDark = 0 0 0 dark
+  $textShadow = '%s, %s, %s' % ( $baseLight $baseDark $baseLight )
+  if type == 'dark'
+    $textShadow = size size size*2 rgba(0,0,0, 0.1)
+  return $textShadow

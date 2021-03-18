@@ -1,9 +1,9 @@
 {% extends 'includes/layout.swig' %}
 
 {% block body %}
-  {% set categoriesList = list_categories({ show_count: false }) %}
-  {% set tagsList = list_tags({ show_count: false }) %}
-  {% set archivesList = list_archives({ show_count: false }) %}
+  {% set categoriesList = list_categories({ show_count: true }) %}
+  {% set tagsList = list_tags({ show_count: true }) %}
+  {% set archivesList = list_archives({ show_count: true }) %}
 
   {% if !is_year() %}
     <div id="archive">
@@ -65,9 +65,7 @@
         </time>
       </div>
     {% endfor %}
-    <div id="paginator">
-      {{ paginator() }}
-    </div>
+    {% include 'includes/paginator.swig' %}
   {% endif %}
 
 {% endblock %}

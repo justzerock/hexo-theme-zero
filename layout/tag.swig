@@ -15,7 +15,6 @@
     {% endfor %}
   </div>
 
-  <div id="paginator">
-    {{ paginator() }}
-  </div>
+  {% include 'includes/paginator.swig' %}
+
 {% endblock %}

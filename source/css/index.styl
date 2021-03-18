@@ -1,7 +1,18 @@
-@import './_common/index.styl';
-@import './_variables/variables.styl';
-@import './_mixins/index.styl';
+@import './_variables/variables.styl'
+@import './_mixins/index.styl'
+@import './_common/index.styl'
+@import './_third-party/index.styl'
+
+if hexo-config('flat-style')
+  @import './style/flat/index.styl'
+else 
+  @import './style/neumorphism/index.styl'
+
+for $inject_style in hexo-config('injects.style')
+  @import $inject_style
 
 body {
-  font-hei()
+  font-family: 'mononoki','Fira Code', monospace
+  //font-hei()
+  //font-family: 'Zhi Mang Xing', cursive;
 }

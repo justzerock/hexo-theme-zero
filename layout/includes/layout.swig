@@ -27,38 +27,41 @@
 <html lang="{{ config.language }}">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ pageTitle }}</title>
+  <link rel="preconnect" href="https://gstatic.loli.net">
   {% if theme.stylesheets !== undefined && theme.stylesheets.length > 0 %}
     {# stylesheet list from _config.yml #}
     {% for url in theme.stylesheets %}
       <link rel="stylesheet" href="{{ url }}">
     {% endfor %}
   {% endif %}
+  {% include '../_third-party/jq-head.swig' %}
+  {% include '../_third-party/valine-head.swig' %}
 </head>
 <body>
 
-<div id="menu-outer">
-  <div id="menu-inner">
-    {% for key in Object.keys(theme.menu) %}
-      <a href="{{ theme.menu[key] }}">{{ key }}</a>
-    {% endfor %}
-  </div>
+<div class="menu">
+  {% if theme.custom_file_path.avatar %}
+    {{- zexo_inject('avatar') }}
+  {% else %}
+    {% include './avatar.swig' %}
+  {% endif %}
+  {% for key in Object.keys(theme.menu) %}
+    <a href="{{ theme.menu[key] }}" key="{{ key }}" class="menu__item {% if is_current(theme.menu[key]) || is_home() && key=='Home' %}menu__item--current{% endif %}">
+      <i class="menu__icon if i-{{ key }}"></i>
+      {{ key }}
+    </a>
+  {% endfor %}
+  {% include './bottom.swig' %}
 </div>
 
-<div id="content-outer">
-  <div id="content-inner">
-    {# {% autoescape false %}{{ body }}{% endautoescape %} #}
-    {% block body %}{% endblock %}
-  </div>
+<div class="content-main">
+  {# {% autoescape false %}{{ body }}{% endautoescape %} #}
+  {% block body %}{% endblock %}
 </div>
 
-<div id="bottom-outer">
-  <div id="bottom-inner">
-    <a href="https://beian.miit.gov.cn">闽ICP备19023197号-1</a>
-    <span>Copyright © 2021 <span class="icon-love"><i class="if i-love"></i></span> {{ config.author }}</span>
-    <span>由 <a href="http://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="{{ theme.url }}">Zexo</a></span>
-  </div>
-</div>
+{% include './sidebar.swig' %}
 
 {% if theme.scripts !== undefined && theme.scripts.length > 0 %}
   {# scripts list from config.yml #}
@@ -66,6 +69,5 @@
     <script src="{{ url }}"></script>
   {% endfor %}
 {% endif %}
-
 </body>
 </html>
