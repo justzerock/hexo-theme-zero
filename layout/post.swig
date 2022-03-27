@@ -49,6 +49,7 @@
     </article>
     {% include 'includes/prev-next.swig' %}
     {% include '_third-party/valine.swig' %}
+    {% include '_third-party/highlight-copy.swig' %}
   </div>
 
 

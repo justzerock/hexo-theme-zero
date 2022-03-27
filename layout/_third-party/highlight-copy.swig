@@ -5,10 +5,10 @@ load_copy_button = function () {
   let badge = document.getElementsByClassName('code-badge-pre').length
   
   if (!badge) {
-    // var pres = document.querySelectorAll("pre>code");
-    // for (var i = 0; i < pres.length; i++) {
-    // 	hljs.highlightBlock(pres[i]);
-    // }
+    var pres = document.querySelectorAll("pre>code");
+    for (var i = 0; i < pres.length; i++) {
+    	hljs.highlightBlock(pres[i]);
+    }
 
     /* double click */
     for (var pres = document.querySelectorAll("pre,code,kbd,blockquote,td"), i = 0; i < pres.length; i++) pres[i].addEventListener("dblclick", function() {
@@ -18,10 +18,10 @@ load_copy_button = function () {
     }, !1);
 
     var options = {
-      // contentSelector: ".highlight table .code",
+      contentSelector: ".post__article--content",
       loadDelay:0,
       copyIconClass: "if i-copy",
-      checkIconClass: "if i-success",
+      checkIconClass: "if i-check",
       onBeforeTextCopied: function(text, codeElement) {
         return text;   
       }

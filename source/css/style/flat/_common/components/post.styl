@@ -2,8 +2,8 @@
   border-radius:1vw 1vw 0.5vw 0.5vw
   width: calc(100% - 6vw)
   line-height: 1.65em
-  margin: 3vw auto 0
-  padding: 3vw
+  margin: 2vw auto 0
+  padding: 2vw 3vw
   background: $post-bg-color
   box-shadow: 0 0 10px rgba(#000, 0.08)
   &__top-img {
@@ -23,6 +23,7 @@
     } 
     &--title {
       color: $post-tt-color
+      line-height: 1.5em
     }
     &--gallery {
       display: flex
@@ -35,21 +36,6 @@
       height: 20vw
       width: 28vw
       }
-    .video-container {
-      display: flex
-      justify-content: center
-      iframe {
-        width: 48vw
-        height: 27vw
-        }
-      }
-    kbd {
-      display: inline-flex
-      padding: 0 0.5em
-      border-radius: 0.25em
-      margin: 0 0.25em
-      box-shadow: 2px 2px 5px rgba(#000, 0.2)
-    }
   }
   &__gallery {
     &--block {
@@ -82,76 +68,104 @@
       margin-top: 0
       }
     }
-  .line-numbers .line-numbers-rows {
-    border-right: none
-    // box-shadow: -0.05vw 0 0 #f3f7fb, 0.05vw 0 0 #c1d7e8
-  }
-  pre[class*=language-] {
-    border-radius: 0.5vw
-    // box-shadow: boxShadow(0.1vw, 'light-inset'), boxShadow(0.05vw, 'light-out')
-    background: #EDF3F9
-    margin: 2vw auto
-    &::-webkit-scrollbar {
-      background-color: #EDF3F9
-      -webkit-// box-shadow: inset -0.1vw 0 0.2vw #f3f7fb, inset 0.1vw 0 0.3vw #c1d7e8
-      border-radius: 0 0 0.5vw 0.5vw
-      padding: 0 1vw
-    }
-    &::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, #E8F0F7, darken(#D2E3ED, 10%));
-      border-radius: 0.5vw
-    }
-    code[class*="language-"] {
-      font-family: 'Fira Code'
-      background: none
-    }
-  }
-  .highlight {
+  /* 代码高亮 */
+  .code-badge-pre {
     overflow: auto  
     margin: 3vw 0
-    padding: 0 1em
+    padding: 0
     border-radius: 0.5vw
-    background: #2D343F
-    //box-shadow: 0 0 20px rgba(#000, 0.4)
     position: relative
-    // box-shadow: boxShadow(0.1vw, 'light-inset'), boxShadow(0.05vw, 'light-out')
-    &::-webkit-scrollbar {
-      background-color: #2D343F
-      //-webkit-box-shadow: inset -0.1vw 0 0.2vw #f3f7fb, inset 0.1vw 0 0.3vw #c1d7e8
-      border-radius: 0 0 0.5vw 0.5vw
+    .code-badge {
+      background: rgba(#fff, 0.1)  
+      .code-badge-language {
+        user-select: none
+      }
     }
-    &::-webkit-scrollbar-thumb {
-      background: rgba(#fff, 0.2)
-      border-radius: 0.5vw
-    }
-    table {
-      .gutter {
-        text-align: right
-        font-family: 'fira code'
-        color: rgba(#fff, 0.6)
-        pre {
-          //margin: 1.5em 0 1em
+    .hljs {
+      padding: 1em
+      font-family: 'Menlo'
+        &::-webkit-scrollbar {
+          width 0.6vw
+          height: 0.6vw
+        }
+        &::-webkit-scrollbar-thumb {
+          background: #cfd7e3
+          border-radius: 0.25vw
         }
       }
-      .code {
-        pre {
-          &.code-badge-pre {
-            position: inherit
-            margin: 1.5em 0 1em
-            .code-badge {
-              background: rgba(#fff, 0.1)  
-              color: #31A7F2
-              .code-badge-language {
-                color: #b48ead  
-                user-select: none
-              }
-            }
-          }
-          code.hljs {
-            font-family: 'fira code'
-            background: none
-          }
-        }  
+  }
+
+  /*  按键 */
+  kbd {
+    display: inline-flex
+    padding: 0 0.5em
+    border-radius: 0.25em
+    margin: 0 0.25em
+    background: rgba($post-tt-color, 0.8)
+    color: #efefef
+    box-shadow: 2px 2px 5px rgba(#000, 0.2)
+  }
+
+  /*  外链视频 */
+  .video-container {
+    display: flex
+    justify-content: center
+    iframe {
+      width: 54vw
+      height: 30.375vw
+      border-radius: 0.5vw
+      box-shadow: 0 0 10px rgba(#000, 0.2)
+      }
+  }
+
+  /* 表格 */
+  table {
+    border-spacing: 0
+    border-collapse: collapse
+    * {
+      box-sizing: border-box
+    }
+    th,td {
+      border: 1px solid #2c344152
+      padding: 0.5em
+    }
+    }
+  /* 引用 */
+  blockquote {
+    background: #efefef;
+    border-radius: 1vw;
+    margin: 0;
+    padding: 1em 2em 1em 3em;
+    position relative
+    &::before {
+      content: '“'
+      position: absolute
+      left: 0
+      top: 1vw
+      font-size: 5em
+      color: rgba($post-tt-color-hover, 0.5)
+      }
+    &.pullquote.right {
+      text-align: right
+      padding: 1em 3em 1em 2em;
+      &::before {
+        content: '”'
+        right: 0
+        }
+      }
+    cite {
+      margin-left: 1em
+      font-style: normal
+      position: relative
+      &::before {
+        content: ''
+        position: absolute
+        width: 95%
+        height: 0.5em
+        border-radius: 0.25em
+        left: -0.25em
+        bottom: -0.25em
+        background: rgba($color-yellow, 0.5)
       }
     }
   }
