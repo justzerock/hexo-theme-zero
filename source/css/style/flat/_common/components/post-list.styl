@@ -1,19 +1,17 @@
   .post-list {
     display: flex
     flex-direction: column
-    width: 100%
+    width: calc(100% - 8vw)
+    padding: 4vw
+    background: $post-bg-color
+    box-shadow: 0 0 10px rgba(#000, 0.08)
+    border-radius: 1vw
     &__item {
-      margin: 3vw 0 0 0
-      padding: 0 1vw 1vw
-      overflow: hidden
-      border-radius: 1vw
+      display flex
+      flex-direction: row
+      margin: 1vw
       position: relative
-      background: $post-bg-color
-      box-shadow: 0 0 8px rgba(#000, 0.02)
-      // box-shadow: boxShadow(0.2vw, 'light-out')
       animation: shadow .5s linear
-      //// box-shadow:  10px 10px 44px 0 #bebebe,
-      //       -10px -10px 26px 0 #ffffff;
     }
     @keyframes shadow {
       0% {
@@ -27,137 +25,83 @@
         // box-shadow: boxShadow(0.2vw, 'light-out')
       }
     }
-    &__img {
+    &__img--link {
+      display: flex
+      flex: 1
+      width: 16vw
+      height: 12vw
+      border-radius: 5px
+      overflow hidden
+      box-shadow: 0 5px 11px 0 rgba(#000, 0.18), 0 4px 15px 0 rgba(#000, 0.15)
+      }
+    &__img--img {
       width: 100%
-      height: 15vw
+      height: 100%
       object-fit: cover
+      position relative
+      transition: transform 0.5s ease-in-out
+      &:hover {
+        transform: scale(1.05)
+        }
+    }
+    &__info {
+      display: flex
+      flex-direction: column
+      flex: 2
+      height: 12vw
+      justify-content: space-around
+      margin-left: 2vw
       border-radius: 1vw
     }
-    &__text {
-      // box-shadow: boxShadow(0.07vw, 'light-inset'), boxShadow(0.05vw, 'light-out')
-      padding: 1vw 2vw;
-      margin: 1vw 0;
-      border-radius: 1vw;
-    }
     &__title {
+      font-size: 1.5vw
+      margin: 0.5vw 0
+      width: 36vw
+      overflow: hidden
+      white-space: nowrap
+      text-overflow: ellipsis
       &--link {
-        text-shadow: -0.1vw -0.1vw 0.2vw rgba(255,255,255,0.8),
-                0.1vw 0.1vw 0.2vw rgba(0,0,0,0.1)
         color: $post-tt-color
         &:hover {
-          color: $color-blue
+          color: $post-tt-color-hover
         }
       }
       &--icon {
         font-size: 1em
       }
-      &--top {
-        //margin-top: 15vw
-      }  
     }
     &__excerpt {
       color: $post-tt-color
       opacity: 0.7
-      line-height: 1.75em
+      line-height: 1.6
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      p {
+        margin: 0.5vw 0
+      }
     }
-    &__tags {
+    &__bottom {
       display: flex
-      width: calc(100% - 1.8em)
-      flex-wrap: wrap
-      justify-content: flex-start
-      align-items: center
-    }
+      margin: 0.5vw 0
+      }
     &__date {
-      //position: absolute
-      display: inline-flex;
-      &--toggle {
-        background: #75a7c5
-        color: #fff
-        line-height: 2em
-        //background: linear-gradient(145deg, #50CFFD, #18ABFB);
-        // box-shadow: boxShadow(0.05vw, 'light-out')
-        //text-shadow: textShadow('light', 0.03vw, rgba(#E1EFF3, 0.6), rgba(#000, 0.5))
-        border-radius: 1vw
-        box-sizing: border-box
-        border: 1px solid #F0F7FD
-        display: inline-flex
-        padding: 0 0.5em 0 1em
-        margin: 0.25em 0.25em 0.25em 0
-        position: relative
-        transition: box-shadow .2s ease-in-out
-        cursor: pointer
-        &:active {
-          // box-shadow: boxShadow(0.05vw, 'light-out'), boxShadow(0.05vw, 'light-inset')
-        }
+      &--icon {
+        margin-right: 0.25vw
       }
-      &--placeholder {
-        opacity: 0;  
-        margin-left: 1vw
-      }
-      &--relative, &--absolute {
-        position: absolute
-        width: calc(100% - 2.5em);
-        right: 0.5em
-        display: flex
-        justify-content: center
-        transition: opacity .5s ease-in-out
-      }  
-      &--absolute {
-        opacity: 0
-      }
-      &--checkbox:checked + &--toggle {
-        .post-list__date--absolute {
-          opacity: 1;
-        }
-        .post-list__date--relative {
-          opacity: 0; 
-        }
-      }
-      &--checkbox {
-        display: none 
-      }
+      display: flex;
     }
     &__tag, &__category {
       display: inline-flex
-      margin: 0.25em 0.25em
-      line-height: 2em
-      color: #fff
-      border-radius: 1vw
-      padding: 0 1em
-      transition: box-shadow .2s ease-in-out
-      //text-shadow: 1px 1px 2px rgba(#000, 0.2)
-      // box-shadow: inset 2px 2px 4px rgba(#000, 0.2),
-      //  inset -2px -2px 4px rgba(#fff, 0.3)
-      &:active {
-      }
-    }
-    &__tag {
-      background:  #75c4be;
-      //text-shadow: textShadow('light', 0.5px, rgba(#759ec4, 0.8), rgba(#000, 0.8))
-      &--icon {
-        margin-right: 0.5em
-      }
-    }
-    &__category {
-      background: #75b5c5;
-      //text-shadow: textShadow('light', 0.5px, rgba(#2ec2ff, 0.8), rgba(#000, 0.8))
-      &--icon {
-        margin-right: 0.5em
-      }
-      &--link {
-        &::after {
-          content: '/'
-          position: relative
-          color: rgba(#fff, 0.8)
-          margin: 0 0.5em
-          pointer-events: none
-        } 
-        &:last-child {
-          &::after {
-            display: none
-          }
+      margin: 0 0.2em
+      color: $post-tt-color
+      &:hover {
+        color: $post-tt-color-hover
         }
-        color: #fff
+      &--icon {
+        margin: 0 0.25em 0 0.5em
       }
     }
     &__link {

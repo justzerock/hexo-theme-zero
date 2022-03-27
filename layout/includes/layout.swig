@@ -38,6 +38,7 @@
   {% endif %}
   {% include '../_third-party/jq-head.swig' %}
   {% include '../_third-party/valine-head.swig' %}
+  {% include '../_third-party/waline-head.swig' %}
 </head>
 <body>
 
@@ -53,7 +54,7 @@
       {{ key }}
     </a>
   {% endfor %}
-  {% include './bottom.swig' %}
+  {% include '../_third-party/pjax-menu.swig' %}
 </div>
 
 <div class="content-main">
@@ -62,6 +63,8 @@
 </div>
 
 {% include './sidebar.swig' %}
+
+{% include './bottom.swig' %}
 
 {% if theme.scripts !== undefined && theme.scripts.length > 0 %}
   {# scripts list from config.yml #}

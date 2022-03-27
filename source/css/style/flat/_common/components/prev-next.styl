@@ -1,13 +1,16 @@
 .post__paginator {
   position: relative
   width: 100%
-  margin: 1em auto
+  margin: 0.5vw auto
+  display: flex
+  padding: 0.5em 0
 }
 .post__prev {
-  width: 100%
-  text-align: left  
+  width: 50%
+  display: inline-flex
+  justify-content: flex-start
   &--link {
-    color: rgba(#6E99BB, 0.6)
+    //color: rgba(#6E99BB, 0.6)
     // box-shadow: boxShadow(0.2vw, 'light-out')
     //text-shadow: textShadow('light', 0.05vw, #E5EFF7, rgba(0,0,0,0.5))
     border-radius: 1vw 0.25vw 0.25vw 1vw
@@ -15,7 +18,7 @@
     padding: 0 1.5vw 0 0
     display: inline-flex
     align-items: center
-    max-width: 45%
+    max-width: 90%
     position: relative
     margin-left: 1em
   }
@@ -44,10 +47,11 @@
   }
 }
 .post__next {
-  width: 100%
-  text-align: right  
+  width: 50%
+  display: inline-flex
+  justify-content: flex-end
   &--link {
-    color: rgba(#6E99BB, 0.6)
+    //color: rgba(#6E99BB, 0.6)
     // box-shadow: boxShadow(0.2vw, 'light-out')
     //text-shadow: textShadow('light', 0.05vw, #E5EFF7, rgba(0,0,0,0.5))
     border-radius: 0.25vw 1vw 1vw 0.25vw
@@ -58,7 +62,7 @@
     overflow: hidden
     text-overflow: ellipsis
     white-space: nowrap
-    max-width: 45%
+    max-width: 90%
     position: relative
     margin-right: 1em
   }

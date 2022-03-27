@@ -1,16 +1,20 @@
 body {
   display: flex;
-  min-height: 100vh
+  min-height: calc(100vh - 3vw)
   flex-direction: column;
   justify-content: center
   align-items: center
-  color: rgba($color-dark, 0.8);
+  color: $font-color
   background: $page-bg-color;
   background-attachment: fixed;
   overflow-y: overlay
   padding: 17px
   a {
-    color: lighten($color-blue, 5%)
+    color: $link-color
+    text-decoration: none
+    &:hover {
+      color: $link-color-hover
+      }
   }
   &::-webkit-scrollbar {
     background-color: #F4F4F4
@@ -25,28 +29,12 @@ body {
   }
 }
 
-
 .content-main {
   display: flex
   flex-direction: column
   justify-content: flex-start
   align-items: center
   flex: 1
-}
-
-@keyframes iconAnimate {
-  0%, 100% {
-    transform: scale(1);
-  }
-  10%, 30% {
-    transform: scale(0.9);
-  }
-  20%, 40%, 60%, 80% {
-    transform: scale(1.1);
-  }
-  50%, 70% {
-    transform: scale(1.1);
-  }
 }
 
 ::selection {
@@ -58,7 +46,7 @@ body {
 
 @media (max-width: $xs-width) {
   .content-main {
-    width: 62.3333vw
+    width: 100vw
   }
   .paginator {
     margin: 5vw auto
@@ -66,7 +54,7 @@ body {
 }
 @media (max-width: $sm-width) and (min-width: $xs-width) {
   .content-main {
-    width: 62.3333vw
+    width: 80vw
   }
   .paginator {
     margin: 5vw auto
@@ -74,15 +62,16 @@ body {
 }
 @media (max-width: $md-width) and (min-width: $sm-width)  {
   .content-main {
-    width: 75vw
+    width: 71vw
   }
   .paginator {
     margin: 4vw auto
   }
 }
 @media (min-width: $md-width) {
+
   .content-main {
-    width: 60vw
+    width: 62vw
   }
   .paginator {
     margin: 3vw auto

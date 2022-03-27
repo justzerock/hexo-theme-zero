@@ -1,49 +1,91 @@
+.vcomment-toggle {
+  display: inline-flex
+  cursor: pointer
+  transform: translate(27.5vw,0);
+  .if {
+    text-shadow: 0 0 5px rgba(#000, 0.1)
+    font-size: 2vw
+    &:hover {
+      color: $link-color-hover
+      }
+    }
+  }
 #vcomment {  
   width: 100%
+  transition: all .5s ease-in-out
+  max-height: 0
+  overflow: hidden
   p, pre code, .veditor, .status-bar, .vinput, .vinput::placeholder {
-    color: #6D98BA
+    color: $post-tt-color
   }
 
   .vwrap {
     border: none
-    border-radius: 1vw
-    box-shadow: -0.2vw -0.2vw 0.4vw #f3f7fb, 0.2vw 0.2vw 0.6vw #c1d7e8
-  }
+    .vheader {
+      .vinput {
+        border-bottom: none
+        }
+      }
+  
+    .vedit {
+      .veditor {
+        border-radius: 1vw
+        box-shadow: 0 0 10px rgba(#000, 0.1)
+        padding: 1em 1em 2em 1em
+        //color: #6D98BA
+        text-shadow: 0.1vw 0.1vw 0.3vw rgba(0,0,0,0.08)
+        &::placeholder {
+          //color: #6D98BA
+        }
+      }
+      .vrow {
+        right: 0.5vw
+        bottom: 0.5vw
+        transform: translate(-4vw,0)
+        .text-right {
+          display inline-flex
+          width: 4vw
+          .vicon {
+            display inline-flex
+            }
+          }
+      }
+    }
 
-  .veditor {
-    border-radius: 1vw
-    box-shadow: -0.05vw -0.05vw 0.1vw #f3f7fb, 0.05vw 0.05vw 0.15vw #c1d7e8,
-     inset -0.05vw -0.05vw 0.1vw #f3f7fb, inset 0.05vw 0.05vw 0.15vw #c1d7e8
-    padding: 1em
-    color: #6D98BA
-    background: #E9F1F8
-    text-shadow: 0.1vw 0.1vw 0.3vw rgba(0,0,0,0.08)
-    &::placeholder {
+    .vrow {
+      display: inline-flex  
+      position: absolute
+      right: 1em
+      transform: translate(-1.5vw,-90%)
+    }
+
+    .vicon {
+      fill: $post-tt-color
+      .markdown {
+        display: none}
+    }
+
+    .vbtn {
+      display: inline-flex
+      border-radius: 1vw
+      border: none
+      box-shadow: 0 0 5px rgba(#000, 0.1)
+      color: #ffffff
+      background: $link-color-hover
+    }
+
+    .vimg {
+      border: 2px solid #DFEBF4
+      box-shadow: boxShadow(0.2vw, 'light-out')  
+    }
+
+
+  /*   .vpreview {
       color: #6D98BA
+    } */
+
+  }
+  .vpower {
+    display: none
     }
-  }
-
-  .vicon {
-    fill: #6D98BA
-  }
-
-  .vbtn {
-    display: inline-flex
-    border-radius: 1vw
-    border: none
-    box-shadow: boxShadow(0.1vw, 'light-out')
-    color: #6D98BA
-    &:active {
-      box-shadow: boxShadow(0.1vw, 'light-inset'), boxShadow(0.1vw, 'light-out')
-    }
-  }
-
-  .vimg {
-    border: 2px solid #DFEBF4
-    box-shadow: boxShadow(0.2vw, 'light-out')  
-  }
-
-/*   .vpreview {
-    color: #6D98BA
-  } */
 }

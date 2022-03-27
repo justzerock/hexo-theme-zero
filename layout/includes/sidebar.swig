@@ -1,8 +1,10 @@
 <div class="sidebar">
   {% if is_post() || is_page() %}
-  {{ toc(page.content, {
-    class: 'sidebar__toc'
-  }) }}
+  <div class="sidebar__toc" id="sidebar__toc"></div>
+  {#{{ toc(page.content, {
+    class: 'sidebar__toc',
+    list_number: false
+  }) }}#}
   {% else %}
   {{ tagcloud(site.tags, {
     class: 'sidebar__tag',

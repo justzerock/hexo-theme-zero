@@ -2,10 +2,13 @@
 {% if page.prev %}
   <div class="post__prev">
     <a class="post__prev--link" href="{{ url_for(page.prev.path) }}">
-      <i class="post__prev--icon if i-prev"></i>
+      <i class="post__prev--icon if i-arrow-left"></i>
       <span class="post__prev--text">
-        {{ page.prev.title }}
-        
+        {% if page.prev.title %}
+          {{ page.prev.title }}
+        {% else %}
+            无题
+        {% endif %}
       </span>
       <span class="post__prev--block"></span>
     </a>
@@ -13,7 +16,6 @@
 {% else %}
   <div class="post__prev">
     <span class="post__prev--text">
-      没有了
     </span>
   </div>
 {% endif %}
@@ -22,15 +24,18 @@
     <a class="post__next--link" href="{{ url_for(page.next.path) }}">
       <span class="post__next--block"></span>
       <span class="post__next--text">
-        {{ page.next.title }} 
+        {% if page.next.title %}
+          {{ page.next.title }} 
+        {% else %}
+            无题
+        {% endif %}
       </span>
-      <i class="post__next--icon if i-next"></i>
+      <i class="post__next--icon if i-arrow-right"></i>
     </a>
   </div>
 {% else %}
   <div class="post__next">
     <span class="post__next--text">
-      没有了
     </span>
   </div>
 {% endif %}

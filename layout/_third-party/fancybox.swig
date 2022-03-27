@@ -36,9 +36,9 @@ load_fancybox = function () {
       fullScreen: false,
       slideShow: false,
       protect: true,
-      backFocus: true,
-      animationDuration: 255,
-      transitionDuration: 255,
+      //backFocus: true,
+      //animationDuration: 255,
+      //transitionDuration: 255,
     });
   }
 

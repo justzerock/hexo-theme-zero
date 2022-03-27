@@ -2,7 +2,10 @@
 
 {% block body %}
   <div class="post">
-    <article id="post" class="post__article">
+    <article id="post" class="post__article {% if page.top_img %} post__article--top {% endif %}">
+      {% if page.top_img %}
+        <img class="post__top-img" src="{{page.top_img}}" />
+      {% endif %}
       <h1 class="post__article--title">
       {% if page.title && page.link %}
         <a href="{{ url_for(page.link) }}"><i class="if i-link"></i> {{ page.title }}</a>
@@ -14,30 +17,39 @@
         无题
       {% endif %}
       </h1>
-      {% if page.categories.length %}
-        <span class="post-list__category">
-          <i class="if i-Categories post-list__category--icon"></i>
-          {% for category in page.categories %}
-            <a class="post-list__category--link" href="{{ url_for(category.path) }}">{{ category.name }}</a>
-          {% endfor %}
-        </span>
-      {% endif %}
-      {% if page.tags.length %}
-        {% for tag in page.tags %}
-          <a class="post-list__tag" href="{{ url_for(tag.path) }}"><i class="if i-Tags post-list__tag--icon"></i> {{ tag.name }}</a>
-        {% endfor %}
-      {% endif %}
+      <div class='post__article--date'>
+        {{ moment(page.date).format("YYYY-MM-DD") }}
+      </div>
+      <div class="post__article--content">
       {% autoescape false %}{{ page.content }}{% endautoescape %}
       {% if page.photos %}
+        <div  class='post__gallery--block'>
         {% for photo in page.photos %}
-          <img src="{{ url_for(photo) }}" />
+          <a class='post__gallery--link' href='{{ url_for(photo) }}' target="_blank">
+            <img class='post__gallery--img' src="{{ url_for(photo) }}" />
+          </a>
+        {% endfor %}
+        </div>
+      {% endif %}
+      </div>
+      {% if page.categories.length %}
+        <i class="if i-Categories post-list__category--icon"></i>
+        {% for category in page.categories %}
+          <a class="post-list__category" href="{{ url_for(category.path) }}">
+            · {{ category.name }}
+          </a>
+        {% endfor %}
+      {% endif %}
+      {% if page.tags.length %}
+        <i class="if i-Tags post-list__tag--icon"></i>
+        {% for tag in page.tags %}
+          <a class="post-list__tag" href="{{ url_for(tag.path) }}">#{{ tag.name }}</a>
         {% endfor %}
       {% endif %}
     </article>
+    {% include 'includes/prev-next.swig' %}
+    {% include '_third-party/valine.swig' %}
   </div>
 
-  {% include 'includes/prev-next.swig' %}
-  {% include '_third-party/valine.swig' %}
-  {% include '_third-party/fancybox.swig' %}
 
 {% endblock %}

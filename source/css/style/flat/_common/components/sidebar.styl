@@ -2,18 +2,48 @@
   position: fixed
   right: 0
   top: 0
-  width: calc(16.6667vw - 2em)
+  width: calc(19vw - 2em)
   height: calc(100vh - 2em)
   border-radius: 1vw 0 0 1vw
   display: flex
   flex-direction: column
-  background: rgba(#fff, 0.1)
-  // box-shadow: -2px 0 6px rgba(#000, 0.06), inset 1px 0 2px rgba(#fff, 0.6)
   padding: 1em
+  ol, ul {
+    padding-left: 1em
+  }
   ol {
     list-style none
   }
   a[class*=sidebar__tag-] {
     display: inline-flex
+  }
+  a[class*=sidebar__toc-] {
+    display: inline-flex
+  }
+  .toc-list {
+    overflow hidden
+    transition: all .3s ease-in-out
+    line-height: 1.75em
+    &.is-collapsed {
+      max-height 0
+      }
+    .toc-list-item {
+      position relative
+      .toc-link {
+        white-space nowrap
+        &.is-active-link {
+          &::before {
+            content: ''
+            position: absolute
+            left: -0.8em
+            top: 0.25em
+            width: 0.2em
+            height: 1.25em
+            border-radius: 0.1em
+            background: $link-color-hover
+            }
+          }
+        }
+      }  
   }
 }

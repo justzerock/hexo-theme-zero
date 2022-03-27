@@ -1,4 +1,5 @@
 {% if theme.valine.enable %}
+<div class='vcomment-toggle' title='评论'><i class='if i-comment'></i></div>
 <div id="vcomment"></div>
 <script>
 
@@ -33,5 +34,15 @@
   document.addEventListener('pjax:complete', function (){
     load_valine()
   })
+
+  document.getElementsByClassName('vcomment-toggle')[0].onclick = function () {
+    let vcomment = document.getElementById('vcomment')
+    if ( ('','0','0px').includes(vcomment.style.maxHeight) ) {
+      vcomment.style.maxHeight = '999px'
+      setTimeout(() => {  vcomment.style.maxHeight = 'max-content' }, 500);
+    } else {
+      vcomment.style.maxHeight = '0'
+    }
+  }
 </script>
 {% endif %}
