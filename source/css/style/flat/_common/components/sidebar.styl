@@ -3,47 +3,80 @@
   right: 0
   top: 0
   width: calc(19vw - 2em)
-  height: calc(100vh - 2em)
   border-radius: 1vw 0 0 1vw
   display: flex
-  flex-direction: column
-  padding: 1em
+  padding: 0 1em
   ol, ul {
     padding-left: 1em
   }
   ol {
     list-style none
   }
-  a[class*=sidebar__tag-] {
-    display: inline-flex
-  }
-  a[class*=sidebar__toc-] {
-    display: inline-flex
-  }
-  .toc-list {
-    overflow hidden
-    transition: all .3s ease-in-out
-    line-height: 1.75em
-    &.is-collapsed {
-      max-height 0
-      }
-    .toc-list-item {
-      position relative
-      .toc-link {
-        white-space nowrap
-        &.is-active-link {
-          &::before {
-            content: ''
-            position: absolute
-            left: -0.8em
-            top: 0.25em
-            width: 0.2em
-            height: 1.25em
-            border-radius: 0.1em
-            background: $link-color-hover
-            }
-          }
+  /*  标签 */
+  &__tag {
+    display: flex
+    flex-wrap: wrap
+    margin-top: 3vw
+    padding-left: 1em
+    position: relative
+    background: #fff
+    border-radius: 0.5vw
+    box-shadow: 0 0 10px rgba(#000, 0.05)
+    animation: tag-bg .5s ease-in-out 
+    @keyframes tag-bg {
+      0% {
+        background: rgba(#fff, 0.1)
         }
-      }  
+      100% {
+        background: rgba(#fff, 1)
+        }
+    }
+    &--icon {
+      position: absolute
+      top: 0.25vw
+      right: 0.25vw
+      color: #e77415
+      }
+    a[class*=sidebar__tag--item] {
+      display: inline-flex
+      align-items: center
+      padding: 0.5vw 1vw 0.5vw 0
+    }
   }
+
+  /*  目录 */
+  &__toc {
+    margin-top: 3vw
+    &--icon {
+      transform: translateY(0.5vw)
+      }
+    &--list {
+      .toc-list {
+        overflow hidden
+        transition: all .3s ease-in-out
+        line-height: 1.75em
+        &.is-collapsed {
+          max-height 0
+          }
+        .toc-list-item {
+          position relative
+          .toc-link {
+            white-space nowrap
+            &.is-active-link {
+              &::before {
+                content: ''
+                position: absolute
+                left: -0.8em
+                top: 0.25em
+                width: 0.2em
+                height: 1.25em
+                border-radius: 0.1em
+                background: $link-color-hover
+                }
+              }
+            }
+          }  
+      }
+      }
+    }
 }
