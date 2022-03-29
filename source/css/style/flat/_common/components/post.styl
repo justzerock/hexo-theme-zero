@@ -18,13 +18,18 @@
   &__article {
     padding: 0 1vw 1vw
     position: relative
+    margin: 0 0 4vw
     &--top {
       padding-top: 15vw
     } 
     &--title {
       color: $post-tt-color
       line-height: 1.5em
+      text-align: center
     }
+    &--date {
+      text-align: center
+      }
     &--gallery {
       display: flex
       flex-wrap: wrap
@@ -75,11 +80,27 @@
     padding: 0
     border-radius: 0.5vw
     position: relative
+    box-shadow: 0 0 0.25vw rgba(#000,0.2)
+    &:hover {
+      .code-badge {
+        div:nth-child(2) {
+          opacity 1
+          }
+        }
+      }
     .code-badge {
+      flex-direction: row-reverse
       background: rgba(#000,0)
+      color: rgba($post-tt-color, 0.5)
+      padding: 0 5px
       .code-badge-language {
-        color: #dedede
+        color: rgba($post-tt-color, 0.5)
+        margin: 0
         user-select: none
+      }
+      div:nth-child(2) {
+        opacity 0
+        transition: all .25s ease-in-out
       }
     }
     .hljs {
@@ -90,7 +111,7 @@
           height: 0.6vw
         }
         &::-webkit-scrollbar-thumb {
-          background: #cfd7e3
+          background: rgba($post-tt-color, 0.25)
           border-radius: 0.25vw
         }
       }

@@ -7,7 +7,7 @@ load_copy_button = function () {
   if (!badge) {
     var pres = document.querySelectorAll("pre>code");
     for (var i = 0; i < pres.length; i++) {
-    	hljs.highlightBlock(pres[i]);
+    	hljs.highlightElement(pres[i]);
     }
 
     /* double click */

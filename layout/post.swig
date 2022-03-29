@@ -18,7 +18,7 @@
       {% endif %}
       </h1>
       <div class='post__article--date'>
-        {{ moment(page.date).format("YYYY-MM-DD") }}
+        {{ date(page.date) }}
       </div>
       <div class="post__article--content">
       {% autoescape false %}{{ page.content }}{% endautoescape %}
@@ -48,17 +48,9 @@
       {% endif %}
     </article>
     {% include 'includes/prev-next.swig' %}
-    <script src="https://beaudar.lipk.org/client.js"
-        repo="justzerock/justzerock.github.io"
-        branch="blog"
-        issue-term="pathname"
-        label="Beaudar"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-    </script>
     {#% include '_third-party/valine.swig' %#}
     {% include '_third-party/highlight-copy.swig' %}
+    {% include '_third-party/beaudar.swig' %}
   </div>
 
 

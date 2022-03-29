@@ -50,7 +50,7 @@
   {% endif %}
   {% for key in Object.keys(theme.menu) %}
     <a href="{{ theme.menu[key] }}" key="{{ key }}" class="menu__item {% if is_current(theme.menu[key]) || is_home() && key=='Home' %}menu__item--current{% endif %}">
-      <i class="menu__icon if i-{{ key }}"></i>
+      {#<i class="menu__icon if i-{{ key }}"></i>#}
       {{ key }}
     </a>
   {% endfor %}
