@@ -12,7 +12,6 @@
     </article>
     {#% include '_third-party/valine.swig' %#}
     {% include '_third-party/highlight-copy.swig' %}
-    {% include '_third-party/beaudar.swig' %}
   </div>
 
 

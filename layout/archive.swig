@@ -7,7 +7,7 @@
 
   {% if !is_year() %}
     <div id="archive">
-      <h1>Archives</h1>
+      <h1>归档</h1>
       {% if theme.atom %}
         <p>
           The feed is available via

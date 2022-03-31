@@ -1,0 +1,24 @@
+.friends__block {
+  display: flex;
+  justify-content: center;
+  &--link {
+    display: flex;
+    border-radius: 1vw;
+    box-shadow: 0 0 0.7vw rgba(#000, 0.1);
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    transition: all .3s ease-in-out
+    &:hover {
+      box-shadow: 0 0 1vw rgba(#000, 0.1);
+      }
+  }
+  &--img {
+    width: 8vw;
+    height: 8vw;
+    object-fit: cover;
+    box-shadow: 0 0 0.5vw rgba(#000, 0.1);
+    border-radius: 0.5vw;
+    margin-right: 3vw;
+  }
+}

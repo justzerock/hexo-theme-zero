@@ -1,0 +1,28 @@
+.go-top {
+  width: 2.5vw;
+  height: 2.5vw;
+  border-radius: 0.5vw;
+  background: #fcfbfb;
+  color: #274b64;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 0 0.5vw rgba(0,0,0, 0.1);
+  align-items: center;
+  position: fixed;
+  right: 1vw;
+  bottom: 1vw;
+  cursor: pointer;
+  transition: all .3s ease-in-out
+  transform: translate(0, 3.5vw)
+  &:hover {
+    box-shadow: 0 0 0.8vw rgba(0,0,0, 0.1);
+    color: $post-tt-color-hover
+    }
+  &:active {
+    box-shadow: 0 0 0.2vw rgba(0,0,0, 0.08);
+    transform: translate(0.05vw, 0.05vw)
+    }
+  .if {
+    font-size: 1.5em
+    }
+}

@@ -6,6 +6,7 @@
   border-radius: 1vw 0 0 1vw
   display: flex
   padding: 0 1em
+  flex-direction: column
   ol, ul {
     padding-left: 1em
   }
@@ -27,9 +28,11 @@
     @keyframes tag-bg {
       0% {
         background: rgba(#fff, 0.1)
+        box-shadow: 0 0 2px rgba(#000, 0.05)
         }
       100% {
         background: rgba(#fff, 1)
+        box-shadow: 0 0 10px rgba(#000, 0.05)
         }
     }
     &--icon {

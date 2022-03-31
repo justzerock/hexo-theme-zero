@@ -64,6 +64,9 @@
 
 {% include './sidebar.swig' %}
 
+{% include './go-top.swig' %}
+{% include './settings.swig' %}
+
 {% include './bottom.swig' %}
 
 {% if theme.scripts !== undefined && theme.scripts.length > 0 %}

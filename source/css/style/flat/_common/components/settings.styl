@@ -1,0 +1,32 @@
+.settings {
+  position: fixed
+  bottom: 4vw
+  right: 1vw
+  display: flex
+  flex-direction: column
+  &__btn {
+    width: 2.5vw
+    height: 2.5vw
+    display: flex
+    border-radius: 0.5vw;
+    background: #fcfbfb;
+    color: #274b64;
+    justify-content: center;
+    box-shadow: 0 0 0.5vw rgba(0,0,0, 0.1);
+    align-items: center;
+    cursor: pointer;
+    margin-top: 0.5vw
+    transition: all .3s ease-in-out
+    &.disable {
+      color: rgba(#274b64, 0.2)
+      }
+    &:hover {
+      box-shadow: 0 0 0.8vw rgba(0,0,0, 0.1);
+      color: $post-tt-color-hover
+    }
+    &:active {
+      box-shadow: 0 0 0.2vw rgba(0,0,0, 0.08);
+      transform: translate(0.05vw, 0.05vw)
+      }
+    }
+  }

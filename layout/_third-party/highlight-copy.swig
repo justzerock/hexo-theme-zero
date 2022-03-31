@@ -2,20 +2,14 @@
 
 load_copy_button = function () {
 
-  let badge = document.getElementsByClassName('code-badge-pre').length
+  let lenBadge = document.querySelectorAll('.code-badge-pre').length
+  let lenPre = document.querySelectorAll('pre').length
   
-  if (!badge) {
+  if ( lenPre && !lenBadge ) {
     var pres = document.querySelectorAll("pre>code");
     for (var i = 0; i < pres.length; i++) {
     	hljs.highlightElement(pres[i]);
     }
-
-    /* double click */
-    for (var pres = document.querySelectorAll("pre,code,kbd,blockquote,td"), i = 0; i < pres.length; i++) pres[i].addEventListener("dblclick", function() {
-        var e = getSelection(),
-            t = document.createRange();
-        t.selectNodeContents(this), e.removeAllRanges(), e.addRange(t)
-    }, !1);
 
     var options = {
       contentSelector: ".post__article--content",
