@@ -3,10 +3,6 @@
     <img class="menu__avatar--img"  src="{{ theme.avatar }}"/>
   </a>
   <span class="menu__avatar--title">
-    {% if theme.title %}
-      {{ theme.title }}
-    {% else %}
-      {{ config.title }}
-    {% endif %}
+    亦<span class="menu__avatar--ru">如</span>年少
   </span>
 </div>

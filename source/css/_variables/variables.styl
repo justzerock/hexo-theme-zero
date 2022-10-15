@@ -5,21 +5,75 @@ $color-red    = #FF5D5A
 $color-green  = #1B9984
 $color-blue   = #42A5F5
 $color-blue-gray = #6D94B7
+$font-color = #34495e
+$font-color-dark = #efefef
 
-$page-bg-color = #eeeeee
-$post-bg-color = #FCFBFB
+$body-bg-color = #eeeeee
+$body-bg-color-dark = #181C27
+
+$body-bg-img = url('https://www.transparenttextures.com/patterns/inspiration-geometry.png')
+$body-bg-img-dark = url('https://www.transparenttextures.com/patterns/inspiration-geometry.png')
+
+
+$block-bg-color = rgba(#fff, 0.6)
+$block-bg-color-dark = rgba(#2F343D, 0.9)
+
+$post-bg-color = rgba(#fff, 0.5)
+$post-bg-color-dark = rgba(#fff, 0.1)
+
 $post-tt-color = darken($color-blue-gray, 50%)
+$post-tt-color-dark = #dedede
+
 $post-tt-color-hover = $color-blue
 
+$page-nav-line-color = rgba($post-tt-color, 0.1)
+
+$page-number-color = $color-blue-gray
+$page-number-color-dark = rgba(#fff, 0.6)
+
+$page-number-color-current = rgba($color-blue-gray, 0.5)
+$page-number-color-current-dark = rgba($color-blue-gray, 0.5)
+
+$page-number-bg-color = rgba(#fff, 0.5)
+$page-number-bg-color-dark = rgba(#000, 0.2)
+
+$page-number-bg-color-current = rgba(#000, 0.1)
+$page-number-bg-color-current-dark = rgba(#fff, 0.05)
+
+$code-bg-color = #efefef
+$code-bg-color-dark = rgba(#000, 0.5)
+
+
+$code-badge = rgba($post-tt-color, 0.5)
+$code-badge-dark = rgba($post-tt-color-hover, 0.5)
+
+$code-scrollbar = rgba($post-tt-color, 0.25)
+$kbd-bg = rgba($post-tt-color, 0.8)
+$kbd-color = #efefef
+
+$quote-bg = #efefef
+$quote-bg-dark = rgba(#000, 0.2)
+
+$quote-icon-color = rgba($post-tt-color-hover, 0.5)
+$cite-bg = rgba($color-yellow, 0.5)
+
+$selection-bg = rgba($color-blue, 0.8)
+$selection-color = #efefef
+
 $menu-bg-color = $post-bg-color
+$menu-bg-color-dark = rgba(#fff, 0.1)
+
 $menu-tt-color = darken($color-blue-gray, 40%)
+$menu-tt-color-dark = rgba(#fff, 0.5)
+
 $menu-tt-color-hover = darken($color-blue-gray, 30%)
 
-$link-color = darken($color-blue-gray, 50%)
+$link-color = rgba($color-blue, 0.8)
 $link-color-hover = $color-blue
 
+$sidebar-icon-color = rgba($post-tt-color, 0.1)
 
-$font-color = #34495e
+$archive-tt-color = darken($color-blue-gray, 40%)
 
 $body-bg = linear-gradient(145deg, #E9F1F8, #D3E4EF)
 $bg-lg = linear-gradient(145deg, #DFEBF4, #cbd4dd)
@@ -55,3 +109,95 @@ $xs-width = 576px - 0.02px
 $sm-width = 768px - 0.02px
 $md-width = 992px - 0.02px
 $lg-width = 1200px - 0.02px
+
+$xs = 425px
+$sm = 576px
+$md = 768px
+$lg = 1024px
+
+
+// 颜色模式
+:root
+  --content-main-width 62vw
+  --paginator-margin 3vw
+
+  --color-mode 'light'
+  --body-bg-color $body-bg-color
+  --body-bg-img $body-bg-img
+  --post-bg-color $post-bg-color
+  --post-tt-color $post-tt-color
+  --font-color $font-color
+  --block-bg-color $block-bg-color
+
+  --code-bg-color $code-bg-color
+  --quote-bg $quote-bg
+  --code-badge $code-badge
+
+  --menu-bg-color $menu-bg-color
+  --menu-tt-color $menu-tt-color
+
+  --page-number-color $page-number-color
+  --page-number-color-current $page-number-color-current
+  --page-number-bg-color $page-number-bg-color
+  --page-number-bg-color-current $page-number-bg-color-current
+
+
+dark-colors()
+  --body-bg-color $body-bg-color-dark
+  --body-bg-img $body-bg-img-dark
+  --post-bg-color $post-bg-color-dark
+  --post-tt-color $post-tt-color-dark
+  --font-color $font-color-dark
+  --block-bg-color $block-bg-color-dark
+
+  --code-bg-color $code-bg-color-dark
+  --quote-bg $quote-bg-dark
+  --code-badge $code-badge-dark
+
+  --menu-bg-color $menu-bg-color-dark
+  --menu-tt-color $menu-tt-color-dark
+
+  --page-number-color $page-number-color-dark
+  --page-number-color-current $page-number-color-current-dark
+  --page-number-bg-color $page-number-bg-color-dark
+  --page-number-bg-color-current $page-number-bg-color-current-dark
+
+
+
+@media (prefers-color-scheme: dark)
+  :root
+    --color-mode 'dark'
+
+  :root:not([data-user-color-scheme])
+    dark-colors()
+
+[data-user-color-scheme='dark']
+  dark-colors()
+
+
+@media (max-width: $xs-width) {
+  :root {
+    --content-main-width: 100vw
+    --paginator-margin: 5vw
+  }
+}
+
+@media (max-width: $sm-width) and (min-width: $xs-width) {
+  :root {
+    --content-main-width: 80vw
+    --paginator-margin: 5vw
+  }
+}
+@media (max-width: $md-width) and (min-width: $sm-width) {
+  :root {
+    --content-main-width: 71vw
+    --paginator-margin: 4vw
+  }
+}
+
+@media (min-width: $lg-width) {
+  :root {
+    --content-main-width: 62vw
+    --paginator-margin: 3vw
+  }
+}

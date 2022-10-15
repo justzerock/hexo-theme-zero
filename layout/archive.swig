@@ -1,71 +1,40 @@
 {% extends 'includes/layout.swig' %}
 
 {% block body %}
-  {% set categoriesList = list_categories({ show_count: true }) %}
-  {% set tagsList = list_tags({ show_count: true }) %}
-  {% set archivesList = list_archives({ show_count: true }) %}
+<div class='post archive'>
+{%- set current_year = '1970' %}
+{%- for post in page.posts.toArray() %}
 
-  {% if !is_year() %}
-    <div id="archive">
-      <h1>归档</h1>
-      {% if theme.atom %}
-        <p>
-          The feed is available via
-          <a href="{{ theme.atom }}">atom</a>.
-        </p>
-        <br>
-      {% endif %}
+  {%- set year = date(post.date, 'YYYY') %}
 
-      {% if config.atom %}
-        <p>
-          The feed is available via
-          <a href="{{ config.atom }}">atom</a>.
-        </p>
-        <br>
-      {% endif %}
-
-      <aside>
-        <h2>Categories</h2>
-        {% if categoriesList %}
-          {% autoescape false %}{{ categoriesList }}{% endautoescape %}
-        {% else %}
-          <p>None.</p>
-        {% endif %}
-      </aside>
-      <br>
-
-      <aside>
-        <h2>Tags</h2>
-        {% if tagsList %}
-          {% autoescape false %}{{ tagsList }}{% endautoescape %}
-        {% else %}
-          <p>None.</p>
-        {% endif %}
-      </aside>
-      <br>
-
-      <aside>
-        <h2>Archives</h2>
-        {% if archivesList %}
-          {% autoescape false %}{{ archivesList }}{% endautoescape %}
-        {% else %}
-          <p>None.</p>
-        {% endif %}
-      </aside>
+  {%- if year !== current_year %}
+    {%- set current_year = year %}
+    <div class="archive__collection">
+      <span class="archive__collection--year">{{ current_year }}</span>
     </div>
-  {% else %}
-    <h1>{{ page.month + '/' + page.year }}</h1>
-    {% for postItem in page.posts.toArray() %}
-      <div class="archive-item">
-        <a href="{{ url_for(postItem.path) }}">
-          {{ postItem.title }}
-        </a>
-        <time datetime="{{ date_xml(postItem.date) }}">
-          {{ date(postItem.date) }}
-        </time>
-      </div>
-    {% endfor %}
-    {% include 'includes/paginator.swig' %}
-  {% endif %}
+  {%- endif %}
 
+  <div class="archive__item">
+
+    <a class="archive__item--link" href="{% if post.link %}{{ url_for(post.link) }}{% else %}{{ url_for(post.path) }}{% endif %}">
+      <div class="archive__item--date">
+          {{ date(post.date, 'MM-DD') }}
+      </div>
+
+      <h1 class="archive__item--title">
+        {% if post.title && post.link %}
+          {{ post.title }} <i class="archive__item--icon if i-link"></i>
+        {% elseif post.title %}
+          {{ post.title }}
+        {% else %}
+          无题
+        {% endif %}
+      </h1>
+    </a>
+
+  </div>
+
+{%- endfor %}
+</div>
+{% include 'includes/paginator.swig' %}
 {% endblock %}

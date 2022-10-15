@@ -4,7 +4,9 @@
   <div class="post">
     <article id="post" class="post__article {% if page.top_img %} post__article--top {% endif %}">
       {% if page.top_img %}
+      <p>
         <img class="post__top-img" src="{{page.top_img}}" />
+      </p>
       {% endif %}
       <h1 class="post__article--title">
       {% if page.title && page.link %}
@@ -25,7 +27,7 @@
       {% if page.photos %}
         <div  class='post__gallery--block'>
         {% for photo in page.photos %}
-          <a class='post__gallery--link' href='{{ url_for(photo) }}' target="_blank">
+          <a class='fancybox post__gallery--link' href='{{ url_for(photo) }}'>
             <img class='post__gallery--img' src="{{ url_for(photo) }}" />
           </a>
         {% endfor %}

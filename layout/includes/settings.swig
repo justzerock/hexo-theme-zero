@@ -1,37 +1,55 @@
+<div class='blur'></div>
 <div class='settings'>
-  <div class='settings__btn' id='dark-mode-toggle' title='切换暗色'>
-    <i class='if i-sun'></i>
+  <div class='settings__block'>
+    <div class='settings__btn light' id='btn-light' aria-label='切换亮色'>
+      <i class='if i-sun'></i>
+    </div>
+    <div class='settings__btn dark' id='btn-dark' aria-label='切换暗色'>
+      <i class='if i-moon'></i>
+    </div>
+    <div class='settings__btn auto' id='btn-auto' aria-label='跟随系统'>
+      <i class='if i-auto'></i>
+    </div>
   </div>
-  <div class='settings__btn disable' id='comment-toggle' title='开启评论'>
+  <div class='settings__btn toggle' id='color-mode-toggle' aria-label='颜色模式'>
+    <i class='if i-auto'></i>
+  </div>
+  <div class='settings__btn' id='search' aria-label='搜索'>
+    <i class='if i-search'></i>
+  </div>
+  <div class='settings__btn gotop' id='go-top' aria-label='滚动到顶部'>
+    <i class='if i-arrow-up'></i>
+  </div>
+  {#<div class='settings__btn disable' id='comment-toggle' aria-label='开启评论'>
     <i class='if i-comment'></i>
-  </div>
+  </div>#}
 </div>
 
 <script>
 
 let commentToggle = document.getElementById('comment-toggle')
-let darkModeToggle = document.getElementById('dark-mode-toggle')
+let colorModeToggle = document.getElementById('color-mode-toggle')
+let blur = document.getElementsByClassName('blur')[0]
+let settings = document.getElementsByClassName('settings')[0]
 
-getIsDarkMode = function () {
-  let darkMode = localStorage.getItem('dark-mode')
-  if (darkMode === 'true') {
-    darkModeToggle.innerHTML = `<i class='if i-moon'></i>`
+getIscolorMode = function () {
+  let colorMode = localStorage.getItem('color-mode') || 'auto'
+  colorModeToggle.innerHTML = `<i class='if i-${colorMode}'></i>`
+}
+
+colorModeToggle.onclick = function () {
+  if (settings.className.indexOf('open') > -1) {
+    settings.classList.remove('open')
+    blur.classList.remove('open')
   } else {
-    darkModeToggle.innerHTML = `<i class='if i-sun'></i>`
+    settings.classList.add('open')
+    blur.classList.add('open')
   }
 }
 
-darkModeToggle.onclick = function () {
-  let darkMode = localStorage.getItem('dark-mode')
-  if (darkMode === 'true') {
-    localStorage.setItem('dark-mode', 'false')
-    darkModeToggle.innerHTML = `<i class='if i-sun'></i>`
-    darkModeToggle.title = '切换暗色'
-  } else {
-    localStorage.setItem('dark-mode', 'true')
-    darkModeToggle.innerHTML = `<i class='if i-moon'></i>`
-    darkModeToggle.title = '切换亮色'
-  }
+blur.onclick = function () {
+  settings.classList.remove('open')
+  blur.classList.remove('open')
 }
 
 
@@ -39,14 +57,14 @@ getIsComment = function() {
   let isComment = localStorage.getItem('isComment')
   if ( isComment == 'true' ) {
     commentToggle.classList.remove('disable')
-    commentToggle.title = '关闭评论'
+    commentToggle.ariaLabel = '关闭评论'
   } else {
     commentToggle.classList.add('disable')
-    commentToggle.title = '开启评论'
+    commentToggle.ariaLabel = '开启评论'
   }
 }
 
-commentToggle.onclick = function() {
+/* commentToggle.onclick = function() {
   let lenBlock = document.querySelectorAll('#comment-beaudar').length
   let isComment = localStorage.getItem('isComment')
   if ( isComment == 'true' ) {
@@ -63,16 +81,16 @@ commentToggle.onclick = function() {
       load_beaudar()
     }
   }
-}
+} */
 
 document.addEventListener("DOMContentLoaded", (event) => {
-  getIsComment()
-  getIsDarkMode()
+  // getIsComment()
+  getIscolorMode()
 })
 
 document.addEventListener('pjax:complete', function (){
-  getIsComment()
-  getIsDarkMode()
+  // getIsComment()
+  getIscolorMode()
 })
 
 </script>

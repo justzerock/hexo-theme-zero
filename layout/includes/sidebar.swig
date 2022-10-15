@@ -14,11 +14,14 @@
     }) }}
     <div class='sidebar__tag--icon'><i class='if i-Tags'></i></div>
   </div>
-  {#<div class="sidebar__category">
+  <div class="sidebar__category">
     {{ list_categories(site.categories, {
-      class: 'sidebar__category--item'
+      class: 'sidebar__category--item',
+      show_count: false,
+      style: false,
+      separator: ''
     }) }}
     <div class='sidebar__category--icon'><i class='if i-Categories'></i></div>
-  </div>#}
+  </div>
   {% endif %}
 </div>

@@ -20,7 +20,7 @@
     margin-top: 3vw
     padding-left: 1em
     position: relative
-    background: #fff
+    background: var(--block-bg-color)
     border-radius: 0.5vw
     box-shadow: 0 0 10px rgba(#000, 0.05)
     animation: tag-bg .5s ease-in-out 
@@ -39,7 +39,7 @@
       position: absolute
       top: 0
       right: 0
-      color: rgba($post-tt-color, 0.1)
+      color: $sidebar-icon-color 
       .if {
         font-size: 5vw
         }
@@ -49,9 +49,76 @@
       align-items: center
       padding: 0.5vw 1vw 0.5vw 0
       z-index 1
+      position: relative
+      &::after {
+        position: absolute
+        content: ''
+        left: 0
+        bottom: 0.5vw
+        width: 80%
+        height: 0.5vw
+        border-radius: 0.25vw
+        background: $cite-bg
+        opacity: 0
+        }
+      &:hover {
+        &::after {
+          opacity: 1
+          }
+        }
     }
   }
-
+  /*  分类 */
+  &__category {
+        display: flex
+    flex-wrap: wrap
+    margin-top: 1em
+    padding-left: 1em
+    position: relative
+    background: var(--block-bg-color)
+    border-radius: 0.5vw
+    box-shadow: 0 0 10px rgba(#000, 0.05)
+    animation: tag-bg .5s ease-in-out 
+    overflow: hidden
+    ol, ul, li {
+      list-style none
+      display: inline-flex
+      flex-wrap: wrap
+    }
+    &--icon {
+      position: absolute
+      top: 0
+      right: 0
+      color: $sidebar-icon-color 
+      .if {
+        font-size: 5vw
+        }
+      }
+    a[class*=sidebar__category--item] {
+      display: inline-flex
+      align-items: center
+      padding: 0.5vw 1vw 0.5vw 0
+      z-index 1
+      position: relative
+      list-style: none
+      &::after {
+        position: absolute
+        content: ''
+        left: 0
+        bottom: 0.5vw
+        width: 80%
+        height: 0.5vw
+        border-radius: 0.25vw
+        background: $cite-bg
+        opacity: 0
+        }
+      &:hover {
+        &::after {
+          opacity: 1
+          }
+        }
+    }
+    }
   /*  目录 */
   &__toc {
     margin-top: 3vw
@@ -70,7 +137,12 @@
           position relative
           .toc-link {
             white-space nowrap
+            color: var(--post-tt-color)
+            &:hover {
+              color: $link-color-hover
+            }
             &.is-active-link {
+              color: $link-color
               &::before {
                 content: ''
                 position: absolute
@@ -87,4 +159,10 @@
       }
       }
     }
+}
+
+@media (max-width: $xs) {
+  .sidebar {
+    display: none
+  }
 }

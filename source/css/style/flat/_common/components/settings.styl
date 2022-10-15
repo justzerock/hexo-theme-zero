@@ -4,29 +4,297 @@
   right: 1vw
   display: flex
   flex-direction: column
+  z-index: 999
   &__btn {
+    position: relative
     width: 2.5vw
     height: 2.5vw
     display: flex
     border-radius: 0.5vw;
-    background: #fcfbfb;
-    color: #274b64;
+    background: var(--block-bg-color)
+    color: var(--font-color)
     justify-content: center;
     box-shadow: 0 0 0.5vw rgba(0,0,0, 0.1);
     align-items: center;
     cursor: pointer;
     margin-top: 0.5vw
     transition: all .3s ease-in-out
+    &::before  { 
+      display: none ; 
+      position: absolute ; 
+      top: auto ; 
+      left: -10px; 
+      width: 0 ; 
+      height: 0 ; 
+      content: '' ; 
+      border: 5px  solid  transparent ; 
+      border-left-color: var(--block-bg-color)
+      pointer-events: none ; 
+      z-index: 10000 ; 
+    } 
+    &::after  { 
+      display: none ; 
+      position: absolute ; 
+      top: auto ; 
+      right: calc(2.5vw + 10px)
+      padding: 0  10px ; 
+      border-radius: 3px ; 
+      background: var(--block-bg-color)
+      color: var(--font-color)
+      font-size: 11px ; 
+      font-weight: 500 ; 
+      content: attr( aria-label ); 
+      white-space: pre ; 
+      z-index: 10000 ; 
+      line-height: 26px ; 
+    }
     &.disable {
       color: rgba(#274b64, 0.2)
-      }
+    }
     &:hover {
       box-shadow: 0 0 0.8vw rgba(0,0,0, 0.1);
       color: $post-tt-color-hover
+      &::before, &::after  { 
+        display: block ; 
+      }
     }
     &:active {
       box-shadow: 0 0 0.2vw rgba(0,0,0, 0.08);
       transform: translate(0.05vw, 0.05vw)
+    }
+    &.gotop {
+      .if {
+        transition: all .3s ease-in-out
+        transform: rotateX(180deg)
+      }
+      &.up {
+        .if {
+          transform: rotateX(0deg)
+        }  
+      }
+    }
+    &.light, &.dark, &.auto {
+      margin: 0
+      background: transparent
+      border-radius: 0
+      box-shadow: none
+      transition: all .3s ease-in-out
+      &:hover {
+        background: rgba(0,0,0,0.04)
+      }
+    }
+    &.light {
+      //position: absolute
+      left: 0
+      //opacity: 0
+      border-radius: 0.5vw 0.5vw 0 0
+    }
+    &.dark {
+      //position: absolute
+      left: 0
+      //opacity: 0
+    }
+    &.auto {
+      //position: absolute
+      left: 0
+      //opacity: 0
+      border-radius: 0 0 0.5vw 0.5vw
+    }
+  }
+  &__block {
+    background: var(--block-bg-color)
+    border-radius: 0.5vw
+    opacity: 0
+    transition: all .3s ease-in-out
+    position: absolute
+    top: -2vw
+    left: 0
+    transform: scale(.33)
+    &::before  { 
+      display: none ; 
+      position: absolute ; 
+      top: calc(50% - 5px); 
+      right: -10px; 
+      width: 0 ; 
+      height: 0 ; 
+      content: '' ; 
+      border: 5px  solid  transparent ; 
+      border-left-color: var(--block-bg-color)
+      pointer-events: none ; 
+      z-index: 10000 ; 
+    } 
+  }
+  &.open {
+    .settings__block {
+      opacity: 1
+      left: -150%
+      transform: scale(1)
+      &::before {
+        display: block
+      }
+      &.light {
+        //left: calc(-100% - 0.5vw)
+        opacity: 1
+      }
+      &.dark {
+        //left: calc(-200% - 1vw)
+        opacity: 1
+      }
+      &.auto {
+        //left: calc(-300% - 1.5vw)
+        opacity: 1
+      }
+    }
+    .settings__btn {
+      &.toggle {
+        &:hover {
+          &::before {
+            display: none
+          }
+          &::after {
+            display: none
+          }
+        }
       }
     }
   }
+}
+
+.blur {
+  z-index: 99
+  display: none
+  position: fixed
+  width: 100vw
+  height: 100vh
+  top: 0
+  left: 0
+  background: rgba(0,0,0,0.15)
+  -webkit-backdrop-filter: blur(2px)
+  backdrop-filter: blur(2px)
+  &.open {
+    display: block
+  }
+}
+
+@media (max-width: $xs) {
+  .settings {
+    width: 100%
+    bottom: 0
+    right: 0
+    padding: 3vw 0
+    flex-direction: row
+    align-items: center;
+    justify-content: space-evenly;
+    transition: all .3s ease-in-out;
+    box-shadow: 0 0 2px rgba(0,0,0,0.1)
+    background: var(--block-bg-color)
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    &__btn {
+      width: 10vw
+      height: 10vw
+      border-radius: 2vw
+      margin-top: 1.5vw
+      .if {
+        font-size: 5vw
+      }
+      &::before {
+        left: auto
+        top: -10px
+        border-top-color: var(--block-bg-color)
+        border-left-color: transparent
+        display: none
+      }
+      &::after {
+        right: auto
+        top: -35px
+        display: none
+      }
+      &:hover {
+        &::before, &::after  { 
+          display: none
+        }
+      }
+      &:active {
+        &::before, &::after  { 
+          display: none
+        }
+      }
+      &.light {
+        border-radius: 2vw 0 0 2vw
+      }
+      &.auto {
+        border-radius: 0 2vw 2vw 0
+      }
+    }
+    &__block {
+      display: flex
+      flex-direction: row
+      left: calc((100% - 30vw) / 4 - 10vw)   
+      top: 0
+      border-radius: 2vw
+      &::before {
+        position: absolute ; 
+        width: 0 ; 
+        height: 0 ; 
+        content: '' ; 
+        border: 10px  solid  transparent ; 
+        pointer-events: none ; 
+        z-index: 10000 ; 
+        left: calc(50% - 10px);
+        bottom: -20px;
+        top: auto
+        border-top-color: var(--block-bg-color)
+        border-left-color: transparent
+        display: none
+      }
+    }
+    &.open {
+      .settings__block {
+        opacity: 1
+        top: -8vw
+        left: calc((100% - 30vw) / 4 - 10vw)   
+        background: var(--block-bg-color)
+        &.light {
+          //left: calc(-100% - 0.5vw)
+          opacity: 1
+        }
+        &.dark {
+          //left: calc(-200% - 1vw)
+          opacity: 1
+        }
+        &.auto {
+          //left: calc(-300% - 1.5vw)
+          opacity: 1
+        }
+      }
+      .settings__btn {
+        &.light, &.dark, &.auto {
+          //left: calc((100% - 30vw) / 4)   
+        }
+        &.light {
+          //top: -9vw
+        }
+        &.dark {
+          //top: -21vw
+        }
+        &.auto {
+          //top: -33vw
+        }
+        &.toggle {
+          &:hover {
+            &::before {
+              display: none
+            }
+            &::after {
+              display: none
+            }
+          }
+        }
+      }
+    }
+    &.hide {
+      transform: translateY(100%);
+    }
+  }
+}

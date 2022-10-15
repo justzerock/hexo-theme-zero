@@ -1,16 +1,16 @@
 .post {
-  border-radius:1vw 1vw 0.5vw 0.5vw
+  border-radius:1vw
   width: calc(100% - 6vw)
   line-height: 1.65em
   margin: 3vw auto 0
   padding: 2vw 3vw
-  background: $post-bg-color
+  background: var(--block-bg-color)
   box-shadow: 0 0 10px rgba(#000, 0.08)
   &__top-img {
     width: 100%
     height: 15vw
     object-fit: cover
-    border-radius: 1vw 1vw 0 0 
+    border-radius: 1vw
     position: absolute
     left: 0 
     top: 0
@@ -19,14 +19,11 @@
     padding: 0 1vw 1vw
     position: relative
     margin: 0 0 4vw
-    a {
-      color: rgba($link-color-hover, 0.8)
-    }
     &--top {
       padding-top: 15vw
     } 
     &--title {
-      color: $post-tt-color
+      color: var(--post-tt-color)
       line-height: 1.5em
       text-align: center
     }
@@ -102,16 +99,16 @@
       .code-badge {
         div:nth-child(2) {
           opacity 1
-          }
         }
       }
+    }
     .code-badge {
       flex-direction: row-reverse
       background: rgba(#000,0)
-      color: rgba($post-tt-color, 0.5)
+      color: var(--code-badge)
       padding: 0 5px
       .code-badge-language {
-        color: rgba($post-tt-color, 0.5)
+        color: var(--code-badge)
         margin: 0
         user-select: none
       }
@@ -123,20 +120,20 @@
     .hljs {
       padding: 1em
       font-family: 'Menlo'
-      background: #efefef
+      background: var(--code-bg-color)
       &::selection, ::selection {
-        background-color: $post-tt-color-hover
-        color: #efefef
-        }
+        background-color: $selection-bg
+        color: $selection-color
+      }
       &::-webkit-scrollbar {
         width 0.6vw
         height: 0.6vw
       }
       &::-webkit-scrollbar-thumb {
-        background: rgba($post-tt-color, 0.25)
+        background: $code-scrollbar
         border-radius: 0.25vw
       }
-      }
+    }
   }
 
   /*  按键 */
@@ -145,8 +142,8 @@
     padding: 0 0.5em
     border-radius: 0.25em
     margin: 0 0.25em
-    background: rgba($post-tt-color, 0.8)
-    color: #efefef
+    background: $kbd-bg
+    color: $kbd-color
     box-shadow: 2px 2px 5px rgba(#000, 0.2)
   }
 
@@ -176,7 +173,7 @@
     }
   /* 引用 */
   blockquote {
-    background: #efefef;
+    background: var(--quote-bg)
     border-radius: 1vw;
     margin: 1em 0;
     padding: 1em 2em 1em 3em;
@@ -185,9 +182,9 @@
       content: '“'
       position: absolute
       left: 0
-      top: 1vw
+      top: 2vw
       font-size: 5em
-      color: rgba($post-tt-color-hover, 0.5)
+      color: $quote-icon-color
       }
     &.pullquote.right {
       text-align: right
@@ -197,6 +194,10 @@
         right: 0
         }
       }
+    footer {
+      overflow hidden
+      text-overflow: ellipsis
+    }
     cite {
       margin-left: 1em
       font-style: normal
@@ -209,9 +210,39 @@
         border-radius: 0.25em
         left: -0.25em
         bottom: -0.25em
-        background: rgba($color-yellow, 0.5)
+        background: $cite-bg
       }
     }
   }
+}
 
+@media (max-width: $xs) {
+  .post {
+    margin: 0 auto 0
+    padding: 10vw 3vw
+    &__top-img {
+      height: 50vw
+      top: 12vw
+    }
+    &__article {
+      padding-top: 10vw
+      &--top {
+        padding-top: 60vw
+      }
+    }
+    box-shadow: none
+    blockquote {
+      &::before {
+        top: 5vw
+      }
+    }
+      /*  外链视频 */
+    .video-container {
+      iframe {
+        width: 90vw
+        height: 50.6vw
+        border-radius: 1vw
+        }
+    }
+  }
 }

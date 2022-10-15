@@ -10,7 +10,7 @@
             无题
         {% endif %}
       </span>
-      <span class="post__prev--block"></span>
+      <span class="post__prev--mobile">上一篇</span>
     </a>
   </div>
 {% else %}
@@ -22,7 +22,7 @@
 {% if page.next %}
   <div class="post__next">
     <a class="post__next--link" href="{{ url_for(page.next.path) }}">
-      <span class="post__next--block"></span>
+      <span class="post__next--mobile">下一篇</span>
       <span class="post__next--text">
         {% if page.next.title %}
           {{ page.next.title }} 

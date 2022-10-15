@@ -56,7 +56,7 @@
   {% endfor %}
   {% include '../_third-party/pjax-menu.swig' %}
 </div>
-
+  
 <div class="content-main">
   {# {% autoescape false %}{{ body }}{% endautoescape %} #}
   {% block body %}{% endblock %}

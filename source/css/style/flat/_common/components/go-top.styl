@@ -1,4 +1,4 @@
-.go-top {
+/* .go-top {
   width: 2.5vw;
   height: 2.5vw;
   border-radius: 0.5vw;
@@ -14,6 +14,9 @@
   cursor: pointer;
   transition: all .3s ease-in-out
   transform: translate(0, 3.5vw)
+  &.show {
+    transform: translate(0, 0)
+    }
   &:hover {
     box-shadow: 0 0 0.8vw rgba(0,0,0, 0.1);
     color: $post-tt-color-hover
@@ -26,3 +29,9 @@
     font-size: 1.5em
     }
 }
+
+@media (max-width: $xs) {
+  .go-top {
+    display: none
+    }
+  } */
