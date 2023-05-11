@@ -10,7 +10,8 @@
       {% autoescape false %}{{ page.content }}{% endautoescape %}
       </div>
     </article>
-    {% include '_third-party/beaudar.swig' %}
+    {# include '_third-party/beaudar.swig' #}
+    {% include '_third-party/waline.swig' %}
   </div>
 
 {% endblock %}

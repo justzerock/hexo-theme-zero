@@ -15,7 +15,7 @@ menu:
   About: /about
 
 valine:
-  enable: true
+  enable: false
   appId: lUBXsWwG1SnROnGq9wwSqSin-9Nh9j0Va
   appKey: m74UnYUVQL6SbcpdG5mWlIbi
   avatar: robohash

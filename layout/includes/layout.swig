@@ -38,8 +38,8 @@
     {% endfor %}
   {% endif %}
   {% include '../_third-party/jq-head.swig' %}
-  {% include '../_third-party/valine-head.swig' %}
-  {% include '../_third-party/waline-head.swig' %}
+  {# include '../_third-party/valine-head.swig' #}
+  {# include '../_third-party/waline-head.swig' #}
 </head>
 <body>
 
@@ -65,5 +65,6 @@
     <script src="{{ url }}"></script>
   {% endfor %}
 {% endif %}
+{% include '../_third-party/waline-init.swig' %}
 </body>
 </html>

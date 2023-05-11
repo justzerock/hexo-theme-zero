@@ -52,7 +52,8 @@
     </article>
     {% include 'includes/prev-next.swig' %}
     {% include '_third-party/highlight-copy.swig' %}
-    {% include '_third-party/beaudar.swig' %}
+    {# include '_third-party/beaudar.swig' #}
+    {% include '_third-party/waline.swig' %}
   </div>
 
 {% endblock %}
