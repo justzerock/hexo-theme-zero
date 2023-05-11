@@ -30,6 +30,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ pageTitle }}</title>
   <link rel="preconnect" href="https://gstatic.loli.net">
+  <link rel="preconnect" href="https://gstatic.loli.net" crossorigin>
   {% if theme.stylesheets !== undefined && theme.stylesheets.length > 0 %}
     {# stylesheet list from _config.yml #}
     {% for url in theme.stylesheets %}
@@ -42,20 +43,8 @@
 </head>
 <body>
 
-<div class="menu">
-  {% if theme.custom_file_path.avatar %}
-    {{- zexo_inject('avatar') }}
-  {% else %}
-    {% include './avatar.swig' %}
-  {% endif %}
-  {% for key in Object.keys(theme.menu) %}
-    <a href="{{ theme.menu[key] }}" key="{{ key }}" class="menu__item {% if is_current(theme.menu[key]) || is_home() && key=='Home' %}menu__item--current{% endif %}">
-      {#<i class="menu__icon if i-{{ key }}"></i>#}
-      {{ key }}
-    </a>
-  {% endfor %}
-  {% include '../_third-party/pjax-menu.swig' %}
-</div>
+
+{% include './menu.swig' %}
   
 <div class="content-main">
   {# {% autoescape false %}{{ body }}{% endautoescape %} #}
@@ -66,6 +55,7 @@
 
 {% include './go-top.swig' %}
 {% include './settings.swig' %}
+{% include './search.swig' %}
 
 {% include './bottom.swig' %}
 

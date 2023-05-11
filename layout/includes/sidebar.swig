@@ -4,7 +4,7 @@
     {#<div class='sidebar__toc--icon'><i class='if i-toc'></i></div>#}
     <div class="sidebar__toc--list" id="sidebar__toc--list"></div>
   </div>
-  {% elseif is_home() %}
+  {#{% elseif is_home() %}
   <div class="sidebar__tag">
     {{ tagcloud(site.tags, {
       class: 'sidebar__tag--item',
@@ -12,7 +12,7 @@
       max_font: 28,
       unit: px
     }) }}
-    <div class='sidebar__tag--icon'><i class='if i-Tags'></i></div>
+    <div class='sidebar__tag--icon'><i class='if i-tags'></i></div>
   </div>
   <div class="sidebar__category">
     {{ list_categories(site.categories, {
@@ -21,7 +21,7 @@
       style: false,
       separator: ''
     }) }}
-    <div class='sidebar__category--icon'><i class='if i-Categories'></i></div>
-  </div>
+    <div class='sidebar__category--icon'><i class='if i-categories'></i></div>
+  </div>#}
   {% endif %}
 </div>

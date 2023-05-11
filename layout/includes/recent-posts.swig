@@ -24,8 +24,8 @@
             <div class="post-list__date">
                 {#<i class="if i-date post-list__date--icon"></i>#}
                 <span class="post-list__date--date">
-                  {#{ moment(postItem.date).format("YYYY-MM-DD") }#}
-                  发布于 {{ date(postItem.date) }}
+                  {{ moment(postItem.date).format("YYYY.MM.DD") }}
+                  {#{ date(postItem.date) }#}
                 </span>
             </div>
             {% if postItem.categories.length %}

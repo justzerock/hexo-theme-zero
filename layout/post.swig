@@ -20,7 +20,8 @@
       {% endif %}
       </h1>
       <div class='post__article--date'>
-        {{ date(page.date) }}
+        {{ moment(page.date).format("YYYY.MM.DD") }}
+        {#{ date(page.date) }#}
       </div>
       <div class="post__article--content">
       {% autoescape false %}{{ page.content }}{% endautoescape %}

@@ -89,7 +89,7 @@ random_img:
 
 beian:
   enable: true
-  icp: 闽ICP备19023197号-1
+  icp: 闽 ICP 备 19023197 号 -1
 
 custom_file_path:
   avatar: source/_data/avatar.swig

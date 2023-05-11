@@ -32,6 +32,12 @@
       color: $color-red
     }
   } 
+  &__block {
+    display: flex
+    flex-direction: column
+    padding: 5vw 1vw
+    border-radius: 1vw
+  }
   &__item {
     color: var(--menu-tt-color)
     display: inline-flex
@@ -63,6 +69,7 @@
       }
     }
     &--current {
+      color: $link-color-hover
       // box-shadow: boxShadow(0.1vw, 'light-inset')
       background: var(--block-bg-color)
       //text-shadow: -0.1vw -0.1vw 0.2vw rgba(255,255,255,0.8),
@@ -81,42 +88,154 @@
     margin-right: 0.5vw 
     justify-content: center
     align-items: center
-    transition: all .2s ease-in-out
   }
 }
 
 @media (max-width: $xs) {
   .menu {
-    width: calc(100% - 10vw)
-    height: fit-content
+    top: 5px
+    left: 0
+    width: 100%
+    height: 56px
     flex-direction: row
-    padding: 3vw 5vw
-    box-shadow: 0 0 2px rgba(0,0,0,0.1)
+    justify-content: center;
     z-index: 1
     transition: all .3s ease-in-out
-    background: var(--block-bg-color)
-    -webkit-backdrop-filter: blur(3px);
-    backdrop-filter: blur(3px);
+    //box-shadow: 0 0 2px rgba(0,0,0,0.1)
+    //background: var(--block-bg-color)
+    //-webkit-backdrop-filter: blur(3px);
+    //backdrop-filter: blur(3px);
     &.hide {
-      transform: translateY(-100%);
+      //transform: translateY(-100%);
+    }
+    &__avatar {
+      display: none
+    }
+    &__block {
+      display: flex
+      flex-direction: row
+      margin: 0
+      padding: 5px
+      justify-content: space-evenly
+      position: relative
+      background: var(--menu-m-bg)
+      -webkit-backdrop-filter: blur(3px);
+      backdrop-filter: blur(3px); 
+      align-items: center
+      box-shadow: 0 0 5px rgba(0,0,0,0.1)
+    }
+    div {
+      a.menu__item {
+        &--current {
+          color: #fff
+        }
+        &:hover {
+          color: #fff
+        }
+        &:active  {
+          color: $link-color-hover
+        }
       }
-    &__avatar, &__item {
-      display: inline-flex
-      margin: auto
-      width: fit-content
-      &--img {
-        width: 10vw
-        height: 10vw
+    }
+    &__item {
+      z-index 1
+      width: 100px
+      height: 32px
+      border-radius: initial
+      margin: inherit
+      display: flex
+      flex-direction: column
+      color: $link-color-hover
+      box-sizing: border-box
+      position: relative
+      //border-left: 1px solid var(--post-m-border)
+      &::before {
+        content: ''
+        position: absolute
+        width: 2px
+        height: 16px
+        border-radius: 1px
+        background: var(--post-m-border)
+        left: -1px
+        top: 8px
       }
-      &--title {
-        display: none}
-      &--current {
-        color: $link-color-hover
-        background: rgba(0,0,0,0)}
+      &.noline {
+        &::before {
+          display: none
+        }
+      }
+      &:first-child {
+        &::before {
+          display: none
+        }
+      }
       &:hover {
-        background: rgba(0,0,0,0)}
+        box-shadow: none
+        background: none
+      }
       &:active {
-        background: rgba(0,0,0,0)}
+        box-shadow: none
+        background: none
+      }
+      &--current {
+        background: none
+        box-shadow: none
+        &::before {
+          display: none
+        }
+        &:nth-child(1) ~ .menu__indicator {
+          left: 5px
+        }
+        &:nth-child(2) ~ .menu__indicator {
+          left: 105px
+        }
+        &:nth-child(3) ~ .menu__indicator {
+          left: 205px
+        }
+      }
+    }
+    &__back {
+      position: absolute
+      width: 100%
+      height: 70px
+      border-radius: 5px
+      overflow hidden
+      //background: var(--block-bg-color)
+      //-webkit-backdrop-filter: blur(3px);
+      //backdrop-filter: blur(3px);
+      //transition: -webkit-mask-position 0.3s ease-in-out;
+      //-webkit-mask: radial-gradient( circle at calc((100vw - 168px)/4 + 28px)  0, transparent 35px, red 0)
+    }
+    &__icon {
+      width: inherit
+      height: inherit
+      margin: inherit
+      line-height: 75px
+      font-size: 1.5em
+      transition: transform .2s ease-in-out
+      color: $link-color-hover
+    }
+    &__name {
+      position: absolute
+      font-size: 0.75em
+      letter-spacing: 0.05em
+      transition all 0.5s ease-in-out
+      //opacity 0
+      //transform: translateY(20px)
+      color: var(--menu-m-tt)
+    }
+    &__indicator {
+      position: absolute
+      width: 100px
+      height: 32px
+      background: var(--menu-m-in)
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1)
+      //border: 5px solid #eeeeee
+      //box-sizing: border-box
+      //top: -50%
+      border-radius: 5px
+      transition: all .3s ease-in-out
+      left: 5px
     }
   }
 }

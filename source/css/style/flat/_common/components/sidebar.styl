@@ -1,7 +1,7 @@
 .sidebar {
   position: fixed
   right: 0
-  top: 0
+  top: 4vw
   width: calc(19vw - 2em)
   border-radius: 1vw 0 0 1vw
   display: flex
@@ -23,18 +23,7 @@
     background: var(--block-bg-color)
     border-radius: 0.5vw
     box-shadow: 0 0 10px rgba(#000, 0.05)
-    animation: tag-bg .5s ease-in-out 
     overflow: hidden
-    @keyframes tag-bg {
-      0% {
-        background: rgba(#fff, 0.1)
-        box-shadow: 0 0 2px rgba(#000, 0.05)
-        }
-      100% {
-        background: rgba(#fff, 1)
-        box-shadow: 0 0 10px rgba(#000, 0.05)
-        }
-    }
     &--icon {
       position: absolute
       top: 0
@@ -78,7 +67,6 @@
     background: var(--block-bg-color)
     border-radius: 0.5vw
     box-shadow: 0 0 10px rgba(#000, 0.05)
-    animation: tag-bg .5s ease-in-out 
     overflow: hidden
     ol, ul, li {
       list-style none

@@ -2,10 +2,10 @@
 <div class='settings'>
   <div class='settings__block'>
     <div class='settings__btn light' id='btn-light' aria-label='切换亮色'>
-      <i class='if i-sun'></i>
+      <i class='if i-light'></i>
     </div>
     <div class='settings__btn dark' id='btn-dark' aria-label='切换暗色'>
-      <i class='if i-moon'></i>
+      <i class='if i-dark'></i>
     </div>
     <div class='settings__btn auto' id='btn-auto' aria-label='跟随系统'>
       <i class='if i-auto'></i>
@@ -27,14 +27,19 @@
 
 <script>
 
-let commentToggle = document.getElementById('comment-toggle')
+// let commentToggle = document.getElementById('comment-toggle')
 let colorModeToggle = document.getElementById('color-mode-toggle')
 let blur = document.getElementsByClassName('blur')[0]
 let settings = document.getElementsByClassName('settings')[0]
+let search = document.getElementById('search')
 
 getIscolorMode = function () {
-  let colorMode = localStorage.getItem('color-mode') || 'auto'
+  let colorMode = localStorage.getItem('user-color-scheme') || 'auto'
   colorModeToggle.innerHTML = `<i class='if i-${colorMode}'></i>`
+}
+
+search.onclick = function () {
+  
 }
 
 colorModeToggle.onclick = function () {
@@ -53,7 +58,7 @@ blur.onclick = function () {
 }
 
 
-getIsComment = function() {
+/* getIsComment = function() {
   let isComment = localStorage.getItem('isComment')
   if ( isComment == 'true' ) {
     commentToggle.classList.remove('disable')
@@ -62,7 +67,7 @@ getIsComment = function() {
     commentToggle.classList.add('disable')
     commentToggle.ariaLabel = '开启评论'
   }
-}
+} */
 
 /* commentToggle.onclick = function() {
   let lenBlock = document.querySelectorAll('#comment-beaudar').length
